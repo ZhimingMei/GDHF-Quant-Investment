@@ -14,6 +14,12 @@ Codes and documents of the competition held by HOUFANG Investment
 
 ## 项目进度
 
+需要更改项目进度可以点进编辑，然后在`- [] `里面写x，即`- [x] `，就会变成已完成         
+示例：                  
+`- [x] 泳池派队`
+- [x] 泳池派队
+
+### 任务列表
 - [ ] **数据预处理**
   - [ ] 准备因子数据集
   - [ ] 根据因子表现完成因子筛选
@@ -23,3 +29,11 @@ Codes and documents of the competition held by HOUFANG Investment
   - [ ] 机器学习模型构建
  
 - [ ] **模型优化** 
+
+## 参考资料
+
+[Markdown语法介绍](https://www.runoob.com/markdown/md-tutorial.html)      
+
+[阮一峰git操作介绍](http://www.ruanyifeng.com/blog/2018/10/git-internals.html)      
+
+[人工智能选股之循环神经网络----华泰人工智能系列之九](https://mp.weixin.qq.com/s/YGFZRqxerpplXzv2FqNGqQ)
