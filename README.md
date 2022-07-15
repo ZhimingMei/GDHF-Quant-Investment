@@ -30,6 +30,21 @@ Codes and documents of the competition held by HOUFANG Investment
  
 - [ ] **模型优化** 
 
+## 项目结构
+```
+    项目结构如下
+    ├─data 从数据库中获取的数据文件
+    │  ├─
+    │  └─
+    ├─code 项目代码
+    │  ├─factor
+    │  │  ├─factor_test.ipynb 因子测试
+    │  │  └─README.md
+    │  ├─
+    │  └─
+    └─
+    ```
+
 ## 参考资料
 
 [Markdown语法介绍](https://www.runoob.com/markdown/md-tutorial.html)      
