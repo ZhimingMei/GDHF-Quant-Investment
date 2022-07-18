@@ -43,12 +43,12 @@ Codes and documents of the competition held by HOUFANG Investment
     │  ├─
     │  └─
     └─
-    ```
+```
 
 ## 参考资料
 
 [Markdown语法介绍](https://www.runoob.com/markdown/md-tutorial.html)      
 
-[阮一峰git操作介绍](http://www.ruanyifeng.com/blog/2018/10/git-internals.html)      
+[git操作介绍](http://www.ruanyifeng.com/blog/2018/10/git-internals.html)      
 
 [人工智能选股之循环神经网络----华泰人工智能系列之九](https://mp.weixin.qq.com/s/YGFZRqxerpplXzv2FqNGqQ)
