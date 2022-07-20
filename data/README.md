@@ -13,6 +13,12 @@
 
 [//]: # (在下方输入数据集的名称及文件描述)
 
+**股票行情数据**
+`eod_price.gz` eod_price储存的是股票的日行情数据           
+字段： 'S_DQ_PRECLOSE'-昨收盘价, 'S_DQ_OPEN'-开盘价, 'S_DQ_HIGH'-最高价, 'S_DQ_LOW'-最低价, 'S_DQ_CLOSE'-收盘价, 'S_DQ_VOLUME'-成交量（手）, 'S_DQ_AVGPRICE'-均价（VWAP，成交金额/成交量）
+
+------------------------
+
 **价值类因子**            
 `value_factor.gz` value_factor 储存的是价值类有关因子          
 字段：'S_VAL_PE'-市盈率, 'S_VAL_PB_NEW'-市净率, 'S_VAL_PS'-市销率, 'S_DQ_TURN'-换手率, 'S_DQ_MV'-流通市值, 'NET_ASSETS_TODAY'-当日净资产

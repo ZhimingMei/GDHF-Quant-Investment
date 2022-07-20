@@ -34,12 +34,17 @@ Codes and documents of the competition held by HOUFANG Investment
 ```
     项目结构如下
     ├─data 从数据库中获取的数据文件
-    │  ├─
-    │  └─
+    │  ├─data_cleaned 清洗后的数据文件
+    │  │  ├─
+    │  │  └─ 
+    │  ├─eod_price.gz 股票日行情数据
+    │  ├─basic_xx.gz 基础类因子数据
+    │  ├─value_factor.gz 价值类因子数据   
     ├─code 项目代码
     │  ├─factor
-    │  │  ├─factor_test.ipynb 因子测试
-    │  │  └─README.md
+    │  │  ├─get_data.ipynb 基于wind和joinquant数据库的数据提取
+    │  │  ├─factor_analysis.ipynb 因子分析
+    │  │  └─
     │  ├─
     │  └─
     └─
