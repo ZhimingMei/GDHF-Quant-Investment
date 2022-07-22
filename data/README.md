@@ -34,7 +34,7 @@
 字段：'NET_PROFIT_PARENT_COMP_TTM'-归属母公司净利润TTM, 'NET_CASH_FLOWS_OPER_ACT_TTM'-经营活动产生的现金流量净额TTM, 'OPER_REV_TTM'-营业收入TTM
 
 **风险类因子**           
-`risk_factor.gz` risk_factor 储存的是风险类有关因子
+`risk_factor.gz` risk_factor 储存的是风险类有关因子               
 字段：'Variance20'-20日年化收益方差, 'Kurtosis20'-个股收益的20日峰度, 'Skewness20'-个股收益的20日偏度, 'SharpeRatio20'-20日夏普比率
 
 **情绪类因子**          
