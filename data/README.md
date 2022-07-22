@@ -33,4 +33,16 @@
 `basic_ttm.gz` basic_ttm 储存的是TTM（最近12个月）数据              
 字段：'NET_PROFIT_PARENT_COMP_TTM'-归属母公司净利润TTM, 'NET_CASH_FLOWS_OPER_ACT_TTM'-经营活动产生的现金流量净额TTM, 'OPER_REV_TTM'-营业收入TTM
 
+**风险类因子**
+`risk_factor.gz` risk_factor 储存的是风险类有关因子
+字段：'Variance20'-20日年化收益方差, 'Kurtosis20'-个股收益的20日峰度, 'Skewness20'-个股收益的20日偏度, 'SharpeRatio20'-20日夏普比率
+
+**情绪类因子**
+`trade_factor.gz` trade_factor 储存的是基于成交数据的情绪类因子           
+字段：'VOL20'-20日平均换手率, 'VSTD20'-20日成交量标准差, 'TVMA20'-20日成交金额的移动平均值, 'WVAD'-威廉变异离散量
+
+**财务与质量类因子**
+`fa_factor.gz` fa_factor 储存的是财务指标类因子以及质量因子             
+字段：'S_FA_FCFF'-企业自由现金流量, 'S_FA_EPS_BASIC'-基本每股收益, 'S_FA_BPS'-每股净资产, 'S_FA_ORPS'-每股营业收入, 'S_FA_NETPROFITMARGIN'-销售净利率, 'S_FA_GCTOGR'-营业总成本/营业总收入, 'S_FA_ROE'-净资产收益率, 'S_FA_OPERATEINCOMETOEBT'-经营活动净收益/利润总额, 'S_FA_CATOASSETS'-流动资产/总资产, 'S_FA_CURRENT'-流动比率, 'S_FA_QUICK'-速动比率, 'S_FA_FATURN'-固定资产周转率, 'S_FA_OPTOLIQDEBT'-营业利润/流动负债, 'S_FA_PROFITTOOP'-利润总额/营业收入
+
 ***注意：balance sheet和income sheet的报告时间并不是日频的，需要做数据预处理***
