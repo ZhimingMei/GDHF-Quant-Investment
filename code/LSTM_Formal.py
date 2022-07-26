@@ -7,7 +7,7 @@ from collections import deque
 from keras.models import load_model
 
 # 读取股票数据与因子数据
-data = pd.read_csv('merged_daily_freq_factor_cleaned')
+data = pd.read_csv('/Users/ryan/Documents/GitHub/GDHF-Quant-Investment/data/data_cleaned/our_factor_cleaned.gz')
 
 # 单一股票 Test
 stock = data.groupby('S_INFO_WINDCODE').get_group('600111.SH')
@@ -33,7 +33,7 @@ def LSTM_stock(stock, mem_day):
     return x, y
 
 # 导入最优模型
-best_model = load_model('F:/文档/All_codes/models/5.09_46mem_10_lstm2_dense_2_unit_32')
+best_model = load_model('/Users/ryan/Documents/GitHub/GDHF-Quant-Investment/5.09_46mem_10_lstm_2_dense_2_unit_32')
 
 # 查看模型信息
 #best_model.summary()
