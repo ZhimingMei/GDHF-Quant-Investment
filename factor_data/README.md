@@ -2,10 +2,10 @@
 
 ## 选择的因子（结果）
 1. 价值类因子：S_VAL_PS, NET_ASSETS_TODAY
-2. 基础类因子：OPER_REV_TTM, TOT_CUR_LIAB, TOT_ASSETS
-3. 风险类因子：Skewness20, SharpeRatio20
-4. 情绪类因子：VSTD20, WVAD
-5. 财务与质量类因子：S_FA_ROE, S_FA_OPERATEINCOMETOEBT, S_FA_QUICK
+2. 基础类因子：~~OPER_REV_TTM~~, TOT_CUR_LIAB, ~~TOT_ASSETS~~
+3. 风险类因子：Skewness20, ~~SharpeRatio20~~
+4. 情绪类因子：~~VSTD20~~, WVAD
+5. 财务与质量类因子：S_FA_ROE, ~~S_FA_OPERATEINCOMETOEBT~~, ~~S_FA_QUICK~~
 
 ## 文件说明
 
