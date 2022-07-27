@@ -1,15 +1,13 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from collections import deque
 import tensorflow as tf
 from keras.layers import LSTM, Dense, Dropout
 from keras.callbacks import ModelCheckpoint
-from keras.models import load_model
 
 # 读取股票数据与因子数据
-data = pd.read_csv('merged_daily_freq_factor_cleaned')
+data = pd.read_csv('new_factor_data')
 
 # 单一股票 Test
 stock = data.groupby('S_INFO_WINDCODE').get_group('600111.SH')
@@ -23,7 +21,7 @@ def LSTM_stock(stock, mem_day):
     # 建立自变量
     x = []
     for i in range(len(stock)):
-        deq.append(list(stock.iloc[i, 9:15]))
+        deq.append(list(stock.iloc[i, 3:]))
         if len(deq) == mem_day:
             x.append(list(deq))
     x = np.array(x)
