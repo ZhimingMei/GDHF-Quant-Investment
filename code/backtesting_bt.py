@@ -176,7 +176,6 @@ class TestStrategy(bt.Strategy):
                     print(self.buy_lst)
         
         elif self.position:
-            print('test!')
             now_list = []
             for secu in self.buy_lst:
                 data = self.getdatabyname(secu)
@@ -208,8 +207,8 @@ class TestStrategy(bt.Strategy):
         self.order = None
 
 # 填充需要回测的股票池
-secu_lst = {'603160':{'start':'2017-02-14','end':'2017-03-01'},
-            '000002':{'start':'2017-02-14','end':'2017-03-01'},
+secu_lst = {'603160':{'start':'2017-02-14','end':'2022-03-01'},
+            '000002':{'start':'2017-02-14','end':'2022-03-01'},
             }
 
 kdata = GetKdatas(secu_lst).merge_period()
@@ -250,3 +249,5 @@ thestrats = cerebro.run()
 portvalue = cerebro.broker.getvalue()
 # 打印结果
 print(f'结束资金: {round(portvalue, 2)}')
+
+cerebro.plot(iplot=False)
