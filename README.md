@@ -25,10 +25,10 @@ Codes and documents of the competition held by HOUFANG Investment
   - [x] 根据因子表现完成因子筛选
   - [x] 特征工程进行因子的进一步筛选
   
-- [ ] **模型构建**
-  - [ ] 机器学习模型构建
+- [x] **模型构建**
+  - [x] 机器学习模型构建
  
-- [ ] **模型优化** 
+- [x] **模型优化** 
 
 ## 项目结构
 ```
