@@ -1,3 +1,12 @@
+'''
+
+author: 28zhimingmei
+date: 07/28/2022
+description: 根据预测数据进行多股回测, 并对投资组合进行分析
+
+'''
+
+
 import pandas as pd
 import numpy as np
 import backtrader as bt
