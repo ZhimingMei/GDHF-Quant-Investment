@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import backtrader as bt
+import matplotlib.pyplot as plt
 
 import os
 import warnings
@@ -168,7 +169,7 @@ class TestStrategy(bt.Strategy):
                 # 设置买入条件
                 if (data.return_predict > 0):
                     # 买入价格为当前资金的多少倍
-                    order_value = self.broker.getvalue()*0.1
+                    order_value = self.broker.getvalue()*0.01
                     order_amount = self.downcast(order_value/data.close[0], 100)
                     self.order = self.buy(data, size=order_amount, name=secu)
                     self.log(f'Buy:{secu}, price:{data.close[0]:.2f}, amount:{order_amount}')
@@ -207,8 +208,106 @@ class TestStrategy(bt.Strategy):
         self.order = None
 
 # 填充需要回测的股票池
-secu_lst = {'603160':{'start':'2017-02-14','end':'2022-03-01'},
-            '000002':{'start':'2017-02-14','end':'2022-03-01'},
+secu_lst = {'600111': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600383': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600837': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600048': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601138': {'start': '2018-07-12', 'end': '2022-03-31'}, 
+'600918': {'start': '2020-07-08', 'end': '2022-03-31'}, 
+'000800': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002736': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601238': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600655': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600352': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601808': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600958': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600188': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600489': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002493': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600000': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601788': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000776': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002202': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601698': {'start': '2019-07-31', 'end': '2022-03-31'}, 
+'601166': {'start': '2017-02-10', 'end': '2022-03-31'},
+'000703': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601688': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000001': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600426': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000877': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600999': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601838': {'start': '2018-03-12', 'end': '2022-03-31'}, 
+'002568': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600926': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601211': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601236': {'start': '2019-08-07', 'end': '2022-03-31'}, 
+'600176': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000625': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601878': {'start': '2017-07-27', 'end': '2022-03-31'}, 
+'001979': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601881': {'start': '2017-03-02', 'end': '2022-03-31'}, 
+'600900': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600460': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002050': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600183': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000338': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601088': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600886': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002648': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000708': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600089': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601186': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000066': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'603392': {'start': '2020-06-04', 'end': '2022-03-31'}, 
+'002236': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000568': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600346': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600030': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601800': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300207': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600276': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600690': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002129': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002602': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601111': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600362': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601633': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002709': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601066': {'start': '2018-07-23', 'end': '2022-03-31'}, 
+'300628': {'start': '2017-04-21', 'end': '2022-03-31'}, 
+'300274': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600809': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000876': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000895': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601229': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600438': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300316': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'603185': {'start': '2019-02-01', 'end': '2022-03-31'}, 
+'300347': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300033': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601012': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600436': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002142': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'603899': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'601100': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600150': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002601': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600887': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002410': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002049': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300014': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002074': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300496': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002241': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300433': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002414': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002475': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'300124': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000786': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'600406': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'000768': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002120': {'start': '2017-02-10', 'end': '2022-03-31'}, 
+'002001': {'start': '2017-02-10', 'end': '2022-03-31'}
             }
 
 kdata = GetKdatas(secu_lst).merge_period()
@@ -250,4 +349,59 @@ portvalue = cerebro.broker.getvalue()
 # 打印结果
 print(f'结束资金: {round(portvalue, 2)}')
 
-cerebro.plot(iplot=False)
+# cerebro的画图是呈现单只股票的买卖变化情况
+# cerebro.plot(iplot=False) 
+
+
+# 策略分析--绘制收益率变化图
+# 读取benchmark数据
+path = '/Users/ryan/Desktop/quantchina/order-flow-alpha/data'
+file_name = 'market_return.csv'
+input_file = os.path.join(path, file_name)
+df_market = pd.read_csv(input_file, index_col=[0])
+
+df_market['datetime'] = df_market.index
+df_market['datetime'] = pd.to_datetime(df_market['datetime'])
+df_market.reset_index(drop=True, inplace=True)
+
+df_market.drop('money', axis=1, inplace=True)
+
+df_market['return_predict'] = df_market['close']/df_market['close'].shift(1)-1
+df_market['code'] = '399300'
+order = ['code', 'datetime', 'open', 'high', 'low', 'close', 'volume', 'return_predict']
+
+df_market = df_market[order]
+
+thestrat = thestrats[0]
+pyfolio = thestrat.analyzers._pyfolio.get_analysis()
+returns = pyfolio['returns'].values()
+returns = pd.DataFrame(list(zip(pyfolio['returns'].keys(),pyfolio['returns'].values())), columns=['date','total_value'])
+
+
+sharpe = np.round(np.sqrt(252) * returns['total_value'].mean() / returns['total_value'].std(), 4)
+returns['total_value']=returns['total_value']+1
+returns['total_value'] = returns['total_value'].cumprod()
+annal_rtn = np.round(returns['total_value'].iloc[-1]**(252/len(returns))-1, 4)*100
+dd = 1-returns['total_value']/np.maximum.accumulate(returns['total_value'])
+end_idx = np.argmax(dd)
+start_idx = np.argmax(returns['total_value'].iloc[:end_idx])
+maxdd_days = end_idx-start_idx
+maxdd = np.round(max(dd), 4)*100
+
+print(f'Sharpe Ratio: {sharpe}')
+print(f'Annual Return: {annal_rtn}')
+print(f'Max drawdown: {maxdd}')
+
+df_market.rename(columns={'datetime':'date', 'return_predict':'market_return'}, inplace=True)
+returns = pd.merge(returns, df_market[['date','market_return']], on='date', how='left')
+
+returns['market_return'] = 1+returns['market_return']
+returns['market_return'] = returns['market_return'].cumprod()
+returns = returns.set_index('date')
+
+plt.plot(returns['market_return'], label='market_return', color='red', alpha=0.5)
+plt.plot(returns['total_value'], label='portfolio_return', color='blue', alpha=0.5)
+plt.title('20-Stocks Portfolio')
+plt.legend()
+plt.grid()
+plt.show()
