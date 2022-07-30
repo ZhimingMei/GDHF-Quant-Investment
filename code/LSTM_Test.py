@@ -9,7 +9,7 @@ from keras.callbacks import ModelCheckpoint
 # 读取股票数据与因子数据
 data = pd.read_csv('new_factor_data')
 
-# 单一股票 Test
+# 导入检验股票
 stock = data.groupby('S_INFO_WINDCODE').get_group('600111.SH')
 
 # 封装函数，输入值为数据表、记忆天数
@@ -26,12 +26,13 @@ def LSTM_stock(stock, mem_day):
             x.append(list(deq))
     x = np.array(x)
 
-    # 创建输出集 y
+    # 创建输出集
     y = stock['S_DQ_CLOSE'][mem_day - 1:].values
 
-    # 函数输出输入值 list、输出值、NaN 值行
+    # 函数输出模型输入值与输出值
     return x, y
 
+# 创建可调参数集
 mem_days = [5, 10, 15]
 lstm_layers = [1, 2, 3]
 dense_layers = [1, 2, 3]
@@ -85,9 +86,8 @@ def opt_model(mem_days, lstm_layers, dense_layers, units):
                     # 编译（优化器、损失函数、评价函数）
                     model.compile(optimizer='adam', loss='mse', metrics=['mape'])
 
-                    #训练（该模型偏差在 13% 左右）
+                    #训练
                     model.fit(x_tr, y_tr, batch_size=32, epochs=50, validation_data=(x_te, y_te), \
                         callbacks=[cp])
 
-# 跑了两个小时的模型测试……
 opt_model(mem_days, lstm_layers, dense_layers, units)
