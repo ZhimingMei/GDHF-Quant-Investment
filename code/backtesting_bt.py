@@ -410,7 +410,7 @@ returns = returns.set_index('date')
 
 plt.plot(returns['market_return'], label='market_return', color='red', alpha=0.5)
 plt.plot(returns['total_value'], label='portfolio_return', color='blue', alpha=0.5)
-plt.title('20-Stocks Portfolio')
+plt.title('100-Stocks Portfolio')
 plt.legend()
 plt.grid()
 plt.show()
