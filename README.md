@@ -30,22 +30,33 @@ Codes and documents of the competition held by HOUFANG Investment
  
 - [x] **模型优化** 
 
+- [x] **策略回测与评估**
+
+- [x] **研究报告**
+
 ## 项目结构
 ```
     项目结构如下
-    ├─data 从数据库中获取的数据文件
+    ├─factor_data 从数据库中获取的数据文件
     │  ├─data_cleaned 清洗后的数据文件
     │  │  └─README.md 见描述文件
     │  ├─eod_price.gz 股票日行情数据
     │  ├─basic_xx.gz 基础类因子数据
     │  ├─value_factor.gz 价值类因子数据   
+    │  ├─fa_factor.gz 财务与质量类因子
+    │  ├─trade_factor.gz 情绪类因子
+    │  └─risk_factor.gz 风险类因子
+    ├─test_data 用来回测（与测试）的数据
     ├─code 项目代码
     │  ├─factor
+    │  │  ├─因子清洗.py 对因子进行清洗
     │  │  ├─get_data.ipynb 基于wind和joinquant数据库的数据提取
     │  │  ├─factor_analysis.ipynb 因子分析
-    │  │  └─
+    │  │  ├─LSTM 长短期记忆人工神经网络有关代码
+    │  │  └─backtesting.py 回测文件
     │  ├─机器学习
     │  └─项目优化
+    ├─report 项目研究报告
     └─README.md 项目整体描述文档
 ```
 
