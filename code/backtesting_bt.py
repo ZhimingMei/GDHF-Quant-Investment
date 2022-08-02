@@ -172,7 +172,7 @@ class TestStrategy(bt.Strategy):
             return
         
         self.log(f'{self.broker.getvalue():.2f}, {[(x, self.getpositionbyname(x).size) for x in self.buy_lst]}')
-        if len(self.buy_lst)<2:    #! 需要修改该部分内容
+        if not self.position:    # Done
             for secu in set(self.getdatanames()) - set(self.buy_lst):
                 data = self.getdatabyname(secu)
                 # 设置买入条件
@@ -185,7 +185,7 @@ class TestStrategy(bt.Strategy):
                     self.buy_lst.append(secu)
                     print(self.buy_lst)
         
-        elif self.position:
+        else:
             now_list = []
             for secu in self.buy_lst:
                 data = self.getdatabyname(secu)
@@ -364,53 +364,53 @@ print(f'结束资金: {round(portvalue, 2)}')
 
 # 策略分析--绘制收益率变化图
 # 读取benchmark数据
-path = '/Users/ryan/Desktop/quantchina/order-flow-alpha/data'
-file_name = 'market_return.csv'
-input_file = os.path.join(path, file_name)
-df_market = pd.read_csv(input_file, index_col=[0])
+# path = '/Users/ryan/Desktop/quantchina/order-flow-alpha/data'
+# file_name = 'market_return.csv'
+# input_file = os.path.join(path, file_name)
+# df_market = pd.read_csv(input_file, index_col=[0])
 
-df_market['datetime'] = df_market.index
-df_market['datetime'] = pd.to_datetime(df_market['datetime'])
-df_market.reset_index(drop=True, inplace=True)
+# df_market['datetime'] = df_market.index
+# df_market['datetime'] = pd.to_datetime(df_market['datetime'])
+# df_market.reset_index(drop=True, inplace=True)
 
-df_market.drop('money', axis=1, inplace=True)
+# df_market.drop('money', axis=1, inplace=True)
 
-df_market['return_predict'] = df_market['close']/df_market['close'].shift(1)-1
-df_market['code'] = '399300'
-order = ['code', 'datetime', 'open', 'high', 'low', 'close', 'volume', 'return_predict']
+# df_market['return_predict'] = df_market['close']/df_market['close'].shift(1)-1
+# df_market['code'] = '399300'
+# order = ['code', 'datetime', 'open', 'high', 'low', 'close', 'volume', 'return_predict']
 
-df_market = df_market[order]
+# df_market = df_market[order]
 
-thestrat = thestrats[0]
-pyfolio = thestrat.analyzers._pyfolio.get_analysis()
-returns = pyfolio['returns'].values()
-returns = pd.DataFrame(list(zip(pyfolio['returns'].keys(),pyfolio['returns'].values())), columns=['date','total_value'])
+# thestrat = thestrats[0]
+# pyfolio = thestrat.analyzers._pyfolio.get_analysis()
+# returns = pyfolio['returns'].values()
+# returns = pd.DataFrame(list(zip(pyfolio['returns'].keys(),pyfolio['returns'].values())), columns=['date','total_value'])
 
 
-sharpe = np.round(np.sqrt(252) * returns['total_value'].mean() / returns['total_value'].std(), 4)
-returns['total_value']=returns['total_value']+1
-returns['total_value'] = returns['total_value'].cumprod()
-annal_rtn = np.round(returns['total_value'].iloc[-1]**(252/len(returns))-1, 4)*100
-dd = 1-returns['total_value']/np.maximum.accumulate(returns['total_value'])
-end_idx = np.argmax(dd)
-start_idx = np.argmax(returns['total_value'].iloc[:end_idx])
-maxdd_days = end_idx-start_idx
-maxdd = np.round(max(dd), 4)*100
+# sharpe = np.round(np.sqrt(252) * returns['total_value'].mean() / returns['total_value'].std(), 4)
+# returns['total_value']=returns['total_value']+1
+# returns['total_value'] = returns['total_value'].cumprod()
+# annal_rtn = np.round(returns['total_value'].iloc[-1]**(252/len(returns))-1, 4)*100
+# dd = 1-returns['total_value']/np.maximum.accumulate(returns['total_value'])
+# end_idx = np.argmax(dd)
+# start_idx = np.argmax(returns['total_value'].iloc[:end_idx])
+# maxdd_days = end_idx-start_idx
+# maxdd = np.round(max(dd), 4)*100
 
-print(f'Sharpe Ratio: {sharpe}')
-print(f'Annual Return: {annal_rtn}')
-print(f'Max drawdown: {maxdd}')
+# print(f'Sharpe Ratio: {sharpe}')
+# print(f'Annual Return: {annal_rtn}')
+# print(f'Max drawdown: {maxdd}')
 
-df_market.rename(columns={'datetime':'date', 'return_predict':'market_return'}, inplace=True)
-returns = pd.merge(returns, df_market[['date','market_return']], on='date', how='left')
+# df_market.rename(columns={'datetime':'date', 'return_predict':'market_return'}, inplace=True)
+# returns = pd.merge(returns, df_market[['date','market_return']], on='date', how='left')
 
-returns['market_return'] = 1+returns['market_return']
-returns['market_return'] = returns['market_return'].cumprod()
-returns = returns.set_index('date')
+# returns['market_return'] = 1+returns['market_return']
+# returns['market_return'] = returns['market_return'].cumprod()
+# returns = returns.set_index('date')
 
-plt.plot(returns['market_return'], label='market_return', color='red', alpha=0.5)
-plt.plot(returns['total_value'], label='portfolio_return', color='blue', alpha=0.5)
-plt.title('100-Stocks Portfolio')
-plt.legend()
-plt.grid()
-plt.show()
+# plt.plot(returns['market_return'], label='market_return', color='red', alpha=0.5)
+# plt.plot(returns['total_value'], label='portfolio_return', color='blue', alpha=0.5)
+# plt.title('100-Stocks Portfolio')
+# plt.legend()
+# plt.grid()
+# plt.show()
